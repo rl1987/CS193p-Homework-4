@@ -62,7 +62,8 @@
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)shouldAutorotateToInterfaceOrientation:
+(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -72,12 +73,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
-    NSLog(@"PlaceListViewController numberOfSectionsInTableView:");
-    
     self.places = [FlickrFetcher topPlaces];
-    
-    NSLog(@"%@",self.places);
     
     return 1;
 }
@@ -106,9 +102,6 @@
                            componentsSeparatedByString:@", "];
     
     cell.textLabel.text = [placenames objectAtIndex:0];
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@",
-//                                 [placenames objectAtIndex:1],
-//                                 [placenames objectAtIndex:2]];
     
     NSString *subtitle = @"Unknown";
     
@@ -163,17 +156,31 @@
 }
 */
 
-#pragma mark - Table view delegate
+//#pragma mark - Table view delegate
+//
+//- (void)tableView:(UITableView *)tableView 
+//didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self performSegueWithIdentifier:@"Place selected" 
+//                              sender:[self.places objectAtIndex:[indexPath row]]];
+//    
+//}
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    
+    NSAssert([sender isKindOfClass:[UITableViewCell class]],@"ERROR: ...");
+    
+    if (![segue.destinationViewController 
+         respondsToSelector:@selector(setPlace:)])
+        return;
+        
+    NSDictionary *thePlace = [self.places objectAtIndex:
+                              [[self.tableView indexPathForCell:sender] row]]; 
+    
+    [(PhotoTableViewController *) segue.destinationViewController 
+     setPlace:thePlace];
+
 }
 
 @end
