@@ -153,8 +153,8 @@
     
     [(ImageViewController *)segue.destinationViewController setImageURL:picURL];
     
-//    [segue.destinationViewController navigationItem setTitle:
-//     [photo objectForKey:@"title"]];
+    [[(ImageViewController *)segue.destinationViewController navigationItem] 
+    setTitle:[photo objectForKey:@"title"]]; 
     
 }
 
