@@ -14,7 +14,9 @@
 		B7B0363B14B9CB0C004EA3DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0363A14B9CB0C004EA3DE /* main.m */; };
 		B7B0363F14B9CB0C004EA3DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0363E14B9CB0C004EA3DE /* AppDelegate.m */; };
 		B7B0364214B9CB0C004EA3DE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7B0364014B9CB0C004EA3DE /* MainStoryboard.storyboard */; };
-		B7B0364514B9CB0C004EA3DE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0364414B9CB0C004EA3DE /* ViewController.m */; };
+		B7B0364E14B9CC08004EA3DE /* PlaceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0364D14B9CC08004EA3DE /* PlaceListViewController.m */; };
+		B7B0365114B9CC25004EA3DE /* RecentPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0365014B9CC25004EA3DE /* RecentPlaceViewController.m */; };
+		B7B0365514B9D157004EA3DE /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0365414B9D156004EA3DE /* FlickrFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +24,20 @@
 		B7B0362E14B9CB0C004EA3DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B7B0363014B9CB0C004EA3DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B7B0363214B9CB0C004EA3DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		B7B0363614B9CB0C004EA3DE /* Top Places-Info.plist */ = {isa = PBXFileReference; path = "Top Places-Info.plist"; sourceTree = "<group>"; };
+		B7B0363614B9CB0C004EA3DE /* Top Places-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Top Places-Info.plist"; sourceTree = "<group>"; };
 		B7B0363814B9CB0C004EA3DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B7B0363A14B9CB0C004EA3DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B7B0363C14B9CB0C004EA3DE /* Top Places-Prefix.pch */ = {isa = PBXFileReference; path = "Top Places-Prefix.pch"; sourceTree = "<group>"; };
-		B7B0363D14B9CB0C004EA3DE /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		B7B0363C14B9CB0C004EA3DE /* Top Places-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Top Places-Prefix.pch"; sourceTree = "<group>"; };
+		B7B0363D14B9CB0C004EA3DE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B7B0363E14B9CB0C004EA3DE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B7B0364114B9CB0C004EA3DE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		B7B0364314B9CB0C004EA3DE /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
-		B7B0364414B9CB0C004EA3DE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B7B0364C14B9CC08004EA3DE /* PlaceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceListViewController.h; sourceTree = "<group>"; };
+		B7B0364D14B9CC08004EA3DE /* PlaceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceListViewController.m; sourceTree = "<group>"; };
+		B7B0364F14B9CC25004EA3DE /* RecentPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentPlaceViewController.h; sourceTree = "<group>"; };
+		B7B0365014B9CC25004EA3DE /* RecentPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPlaceViewController.m; sourceTree = "<group>"; };
+		B7B0365214B9D156004EA3DE /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
+		B7B0365314B9D156004EA3DE /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
+		B7B0365414B9D156004EA3DE /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +84,16 @@
 		B7B0363414B9CB0C004EA3DE /* Top Places */ = {
 			isa = PBXGroup;
 			children = (
+				B7B0365214B9D156004EA3DE /* FlickrAPIKey.h */,
+				B7B0365314B9D156004EA3DE /* FlickrFetcher.h */,
+				B7B0365414B9D156004EA3DE /* FlickrFetcher.m */,
 				B7B0363D14B9CB0C004EA3DE /* AppDelegate.h */,
 				B7B0363E14B9CB0C004EA3DE /* AppDelegate.m */,
 				B7B0364014B9CB0C004EA3DE /* MainStoryboard.storyboard */,
-				B7B0364314B9CB0C004EA3DE /* ViewController.h */,
-				B7B0364414B9CB0C004EA3DE /* ViewController.m */,
+				B7B0364F14B9CC25004EA3DE /* RecentPlaceViewController.h */,
+				B7B0365014B9CC25004EA3DE /* RecentPlaceViewController.m */,
+				B7B0364C14B9CC08004EA3DE /* PlaceListViewController.h */,
+				B7B0364D14B9CC08004EA3DE /* PlaceListViewController.m */,
 				B7B0363514B9CB0C004EA3DE /* Supporting Files */,
 			);
 			path = "Top Places";
@@ -108,6 +120,7 @@
 				B7B0362614B9CB0C004EA3DE /* Sources */,
 				B7B0362714B9CB0C004EA3DE /* Frameworks */,
 				B7B0362814B9CB0C004EA3DE /* Resources */,
+				B7B0364B14B9CB15004EA3DE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -155,6 +168,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B7B0364B14B9CB15004EA3DE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export CODESIGN_ALLOCATE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"iphoneos\" ]; then\n/Developer/iphoneentitlements401/gen_entitlements.py \"my.company.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B7B0362614B9CB0C004EA3DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -162,7 +191,9 @@
 			files = (
 				B7B0363B14B9CB0C004EA3DE /* main.m in Sources */,
 				B7B0363F14B9CB0C004EA3DE /* AppDelegate.m in Sources */,
-				B7B0364514B9CB0C004EA3DE /* ViewController.m in Sources */,
+				B7B0364E14B9CC08004EA3DE /* PlaceListViewController.m in Sources */,
+				B7B0365114B9CC25004EA3DE /* RecentPlaceViewController.m in Sources */,
+				B7B0365514B9D157004EA3DE /* FlickrFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +225,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -219,7 +250,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -236,6 +267,7 @@
 		B7B0364914B9CB0C004EA3DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Top Places/Top Places-Prefix.pch";
 				INFOPLIST_FILE = "Top Places/Top Places-Info.plist";
@@ -247,6 +279,7 @@
 		B7B0364A14B9CB0C004EA3DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Top Places/Top Places-Prefix.pch";
 				INFOPLIST_FILE = "Top Places/Top Places-Info.plist";
