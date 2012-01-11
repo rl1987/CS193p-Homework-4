@@ -66,7 +66,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 #pragma mark - Table view data source
@@ -154,7 +154,7 @@
     [(ImageViewController *)segue.destinationViewController setImageURL:picURL];
     
     [[(ImageViewController *)segue.destinationViewController navigationItem] 
-    setTitle:[photo objectForKey:@"title"]]; 
+    setTitle:[[sender textLabel] text]]; 
     
 }
 
