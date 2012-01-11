@@ -44,7 +44,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Places" id="Egl-dd-PWL"/>
+                    <navigationItem key="navigationItem" title="Recent Places" id="Egl-dd-PWL"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1090" y="612"/>
