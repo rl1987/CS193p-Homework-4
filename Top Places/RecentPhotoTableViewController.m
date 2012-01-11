@@ -1,15 +1,19 @@
-#import "PhotoTableViewController.h"
+#import "RecentPhotoTableViewController.h"
 
-@implementation PhotoTableViewController
+@implementation RecentPhotoTableViewController
 
 @synthesize photos = _photos;
-@synthesize place = _place;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:
 (UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -20,10 +24,10 @@
 {
     
     NSLog(@"PhotoTableViewController numberOfSectionsInTableView:");
-
-    self.photos = [FlickrFetcher photosInPlace:self.place 
-                                    maxResults:MAX_RESULTS];
-        
+    
+    self.photos=[[[NSUserDefaults standardUserDefaults] 
+                  arrayForKey:@"recents"] copy];
+    
     return 1;
 }
 
@@ -36,13 +40,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Photo cell 1";
+    static NSString *CellIdentifier = @"Photo cell 2";
     
     UITableViewCell *cell = 
     [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:CellIdentifier];
     }
     
@@ -50,8 +54,7 @@
     
     NSString *title = [photo objectForKey:@"title"];
     NSString *subtitle = [[photo objectForKey:@"description"] 
-                          objectForKey:@"_content"];   
-    
+                          objectForKey:@"_content"];    
     if ([title length]==0)
     {
         if ([subtitle length]>0)
@@ -71,32 +74,6 @@
 
 #define MAX_RECENT_PHOTOS 50
 
-- (void)addPhotoToRecents:(NSDictionary *)photo
-{
-    
-    NSLog(@"PhotoTableViewController addPhotoToRecents:");
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSMutableArray *recents = [[defaults arrayForKey:@"recents"] mutableCopy];
-    
-    if (!recents)
-        recents = [[NSMutableArray alloc] init];
-    
-    if ([recents indexOfObject:photo] == NSNotFound)
-        [recents insertObject:photo atIndex:0];
-    
-    if ([recents count] >= MAX_RECENT_PHOTOS)
-        [recents removeLastObject];
-    
-    [defaults setObject:[recents copy] forKey:@"recents"];
-    
-    [defaults synchronize];
-    
-    NSLog(@"%@",recents);
-    
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"PhotoTableViewController prepareForSegue:");
@@ -108,15 +85,13 @@
     
     NSDictionary *photo = [self.photos objectAtIndex:
                            [[self.tableView indexPathForCell:sender] row]];
-    
-    [self addPhotoToRecents:photo];
-    
+        
     picURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
     
     [(ImageViewController *)segue.destinationViewController setImageURL:picURL];
     
     [[(ImageViewController *)segue.destinationViewController navigationItem] 
-    setTitle:[[sender textLabel] text]]; 
+     setTitle:[[sender textLabel] text]]; 
     
 }
 

@@ -10,7 +10,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:
 (UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
     return YES;
 }
 
@@ -32,7 +31,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Top";
+    static NSString *CellIdentifier = @"Place cell";
     
     UITableViewCell *cell = 
     [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
