@@ -17,15 +17,57 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    self.places = [FlickrFetcher topPlaces];
+    //self.places = 
     
-    return 1;
+    NSArray *fetchResults = [FlickrFetcher topPlaces];
+    NSMutableDictionary *places = [[NSMutableDictionary alloc] init];
+    
+    for (NSDictionary *f in fetchResults)
+    {
+        NSString *country;
+        
+        NSArray *placenames = [[f objectForKey:@"_content"] 
+                               componentsSeparatedByString:@", "];
+        
+        if ([placenames count]>=2)
+            country = [placenames lastObject];
+        else
+            country = @"Unknown";
+        
+        if (![places objectForKey:country])
+            [places setObject:[NSMutableArray array] forKey:country];
+        
+        [[places objectForKey:country] addObject:f];
+        
+    }
+    
+    self.places = places;
+    
+    return [self.places count];
+}
+
+- (NSArray *)placesInCountry:(NSInteger)countryIndex
+{
+
+    NSArray *sortedKeys = [[self.places allKeys] sortedArrayUsingSelector:
+                           @selector(compare:)];
+    
+    return [self.places objectForKey:[sortedKeys objectAtIndex:countryIndex]];
+}
+
+- (NSString *)tableView:(UITableView *)tableView 
+titleForHeaderInSection:(NSInteger)section
+{
+    NSArray *countries = [[self.places allKeys] sortedArrayUsingSelector:
+                           @selector(compare:)];
+
+    return [countries objectAtIndex:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
 {
-    return [self.places count];
+    return [[self placesInCountry:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
@@ -40,7 +82,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:CellIdentifier];
     
-    NSDictionary *place = [self.places objectAtIndex:[indexPath row]];
+    NSDictionary *place = [[self placesInCountry:[indexPath section]] 
+                           objectAtIndex:[indexPath row]];
     
     NSArray *placenames = [[place objectForKey:@"_content"] 
                            componentsSeparatedByString:@", "];
@@ -74,9 +117,11 @@
     if (![segue.destinationViewController 
          respondsToSelector:@selector(setPlace:)])
         return;
-        
-    NSDictionary *thePlace = [self.places objectAtIndex:
-                              [[self.tableView indexPathForCell:sender] row]]; 
+    
+    NSIndexPath *placeIndex = [self.tableView indexPathForCell:sender];
+    
+    NSDictionary *thePlace = [[self placesInCountry:[placeIndex section]] 
+                              objectAtIndex:[placeIndex row]];
     
     [(LocationPhotoTableViewController *) segue.destinationViewController 
      setPlace:thePlace];
