@@ -20,8 +20,8 @@
 - (void)awakeFromNib
 {
     self.scrollView.delegate = self;
-    self.scrollView.maximumZoomScale = 2.0;
-    self.scrollView.minimumZoomScale = 0.5;
+    
+    self.scrollView.maximumZoomScale = 1/[[UIScreen mainScreen] scale];
 }
 
 - (void)loadImage
@@ -33,6 +33,14 @@
                 UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.imageURL]];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.imageView.image = image;
+                    
+                    CGSize imageSize = image.size;
+                    CGSize viewSize = self.view.bounds.size;
+                    
+                    CGFloat xScale=viewSize.width/imageSize.width;
+                    CGFloat yScale=viewSize.height/imageSize.height;
+                    
+                    self.scrollView.minimumZoomScale = MIN(xScale,yScale);
                 });
             });
             dispatch_release(imageDownloadQ);
