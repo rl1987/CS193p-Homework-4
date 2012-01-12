@@ -7,8 +7,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImageViewController : UIViewController
+@interface ImageViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSURL *imageURL;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

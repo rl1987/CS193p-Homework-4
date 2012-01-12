@@ -15,7 +15,15 @@
 
 @synthesize imageView = _imageView;
 @synthesize imageURL = _imageURL;
-                         
+@synthesize scrollView = _scrollView;
+           
+- (void)awakeFromNib
+{
+    self.scrollView.delegate = self;
+    self.scrollView.maximumZoomScale = 2.0;
+    self.scrollView.minimumZoomScale = 0.5;
+}
+
 - (void)loadImage
 {
     if (self.imageView) {
@@ -60,7 +68,16 @@
 - (void)viewDidUnload
 {
     self.imageView = nil;
+    [self setScrollView:nil];
     [super viewDidUnload];
+}
+
+#pragma mark -
+#pragma mark Scroll view delegate
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView 
+{
+    return self.imageView;
 }
 
 @end
