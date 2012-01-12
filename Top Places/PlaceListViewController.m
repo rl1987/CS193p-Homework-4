@@ -64,7 +64,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
-    NSAssert([sender isKindOfClass:[UITableViewCell class]],@"ERROR: ...");
+    NSAssert([sender isKindOfClass:[UITableViewCell class]],
+             @"ERROR: Class mismatch 1");
+    
+    NSAssert([segue.destinationViewController 
+              isKindOfClass:[LocationPhotoTableViewController class]],
+             @"ERROR: Class mismatch 2");
     
     if (![segue.destinationViewController 
          respondsToSelector:@selector(setPlace:)])
@@ -73,7 +78,7 @@
     NSDictionary *thePlace = [self.places objectAtIndex:
                               [[self.tableView indexPathForCell:sender] row]]; 
     
-    [(PhotoTableViewController *) segue.destinationViewController 
+    [(LocationPhotoTableViewController *) segue.destinationViewController 
      setPlace:thePlace];
 
 }

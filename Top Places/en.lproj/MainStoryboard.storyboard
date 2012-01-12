@@ -61,12 +61,12 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="20" id="x30-FN-BGz">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" maximumZoomScale="20" id="x30-FN-BGz">
+                                <rect key="frame" x="-20" y="-20" width="340" height="387"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="8ez-zI-DmJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                        <rect key="frame" x="20" y="20" width="320" height="367"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                 </subviews>
@@ -129,7 +129,7 @@
         <scene sceneID="ZRV-Xh-Xl9">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SpM-vs-nML" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="huA-gw-HdO" customClass="PhotoTableViewController" sceneMemberID="viewController">
+                <tableViewController id="huA-gw-HdO" customClass="LocationPhotoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EeB-fW-0eq">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -251,6 +251,26 @@
             <point key="canvasLocation" x="780" y="24"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="ImageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="LocationPhotoTableViewController" superclassName="PhotoTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationPhotoTableViewController.h"/>
+        </class>
+        <class className="PhotoTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoTableViewController.h"/>
+        </class>
+        <class className="PlaceListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaceListViewController.h"/>
+        </class>
+        <class className="RecentPhotoTableViewController" superclassName="PhotoTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecentPhotoTableViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

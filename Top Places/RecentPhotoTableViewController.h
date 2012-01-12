@@ -1,7 +1,5 @@
 #import "PhotoTableViewController.h"
 
-@interface RecentPhotoTableViewController : UITableViewController
-
-@property (nonatomic,strong) NSArray *photos;
+@interface RecentPhotoTableViewController : PhotoTableViewController
 
 @end

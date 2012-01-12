@@ -4,6 +4,7 @@
 
 @synthesize photos = _photos;
 @synthesize place = _place;
+@synthesize cellId = _cellId;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:
 (UIInterfaceOrientation)interfaceOrientation
@@ -14,15 +15,18 @@
 
 #pragma mark - Table view data source
 
-#define MAX_RESULTS 50
+- (NSArray *)retrievePhotoList
+{
+    // set self.photos
+    self.photos = nil;
+    
+    return nil;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-    NSLog(@"PhotoTableViewController numberOfSectionsInTableView:");
-
-    self.photos = [FlickrFetcher photosInPlace:self.place 
-                                    maxResults:MAX_RESULTS];
+    [self retrievePhotoList];
         
     return 1;
 }
@@ -36,14 +40,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Photo cell 1";
-    
+       
     UITableViewCell *cell = 
-    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    [tableView dequeueReusableCellWithIdentifier:self.cellId];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                      reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
+                                      reuseIdentifier:self.cellId];
     }
     
     NSDictionary *photo = [self.photos objectAtIndex:[indexPath row]];
@@ -69,34 +72,6 @@
     return cell;
 }
 
-#define MAX_RECENT_PHOTOS 50
-
-- (void)addPhotoToRecents:(NSDictionary *)photo
-{
-    
-    NSLog(@"PhotoTableViewController addPhotoToRecents:");
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSMutableArray *recents = [[defaults arrayForKey:@"recents"] mutableCopy];
-    
-    if (!recents)
-        recents = [[NSMutableArray alloc] init];
-    
-    if ([recents indexOfObject:photo] == NSNotFound)
-        [recents insertObject:photo atIndex:0];
-    
-    if ([recents count] >= MAX_RECENT_PHOTOS)
-        [recents removeLastObject];
-    
-    [defaults setObject:[recents copy] forKey:@"recents"];
-    
-    [defaults synchronize];
-    
-    NSLog(@"%@",recents);
-    
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"PhotoTableViewController prepareForSegue:");
@@ -108,8 +83,6 @@
     
     NSDictionary *photo = [self.photos objectAtIndex:
                            [[self.tableView indexPathForCell:sender] row]];
-    
-    [self addPhotoToRecents:photo];
     
     picURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
     

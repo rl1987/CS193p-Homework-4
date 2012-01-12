@@ -1,7 +1,8 @@
 #import <UIKit/UIKit.h>
 
 #import "FlickrFetcher.h"
-#import "PhotoTableViewController.h"
+//#import "PhotoTableViewController.h"
+#import "LocationPhotoTableViewController.h"
 
 @interface PlaceListViewController : UITableViewController
 
